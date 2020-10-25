@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="794" pageHeight="649" columnWidth="754" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c4a8aa91-bce6-4c09-9525-9401fd74ada2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="bill_ID" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     service_money+price AS Tong,
+     bill."bill_ID" AS bill_bill_ID,
+     bill."room_ID" AS bill_room_ID,
+     bill."customer_ID" AS bill_customer_ID,
+     bill."service_money" AS bill_service_money,
+     customer."customer_name" AS customer_customer_name,
+     customer."customer_age" AS customer_customer_age,
+     customer."customer_address" AS customer_customer_address,
+     customer."customer_phone" AS customer_customer_phone,
+     Room."type_room" AS Room_type_room,
+     Room."number_floor" AS Room_number_floor,
+     Room."price" AS Room_price,
+     Room."number_person" AS Room_number_person,
+     bill."months" AS bill_months
+FROM
+     "dbo"."customer" customer INNER JOIN "dbo"."bill" bill ON customer."customer_ID" = bill."customer_ID"
+     INNER JOIN "dbo"."Room" Room ON bill."room_ID" = Room."room_ID"
+WHERE
+     bill_ID = $P{bill_ID}]]>
+	</queryString>
+	<field name="Tong" class="java.math.BigDecimal"/>
+	<field name="bill_bill_ID" class="java.lang.String"/>
+	<field name="bill_room_ID" class="java.lang.String"/>
+	<field name="bill_customer_ID" class="java.lang.String"/>
+	<field name="bill_service_money" class="java.math.BigDecimal"/>
+	<field name="customer_customer_name" class="java.lang.String"/>
+	<field name="customer_customer_age" class="java.lang.Integer"/>
+	<field name="customer_customer_address" class="java.lang.String"/>
+	<field name="customer_customer_phone" class="java.lang.String"/>
+	<field name="Room_type_room" class="java.lang.String"/>
+	<field name="Room_number_floor" class="java.lang.Integer"/>
+	<field name="Room_price" class="java.lang.Integer"/>
+	<field name="Room_number_person" class="java.lang.Integer"/>
+	<field name="bill_months" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="88" splitType="Stretch">
+			<line>
+				<reportElement x="8" y="58" width="735" height="2" uuid="790487f6-7b9c-492d-a22e-941181e75253"/>
+			</line>
+			<staticText>
+				<reportElement x="277" y="23" width="239" height="35" uuid="a627d122-4033-4295-8ce0-3cb65a0dce5c"/>
+				<textElement>
+					<font fontName="Cambria" size="22" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[HÓA ĐƠN TIỀN TRỌ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="8" y="1" width="186" height="34" uuid="4482dc57-6634-44d1-8f76-ba23f9f04de4"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<text><![CDATA[Mã Hóa Đơn :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="145" y="1" width="135" height="29" uuid="60cb853c-83fa-4e43-8468-6b3eecaabef5"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bill_bill_ID}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="343" y="1" width="173" height="29" uuid="422b04f5-1193-4967-a4dd-8c15a31c276a"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<text><![CDATA[Mã Khách Hàng :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="516" y="0" width="182" height="29" uuid="4a12c1b9-eb23-42d4-87c2-1aac70b651cb"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bill_customer_ID}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="133" splitType="Stretch">
+			<staticText>
+				<reportElement x="343" y="0" width="168" height="26" uuid="941593f4-a355-4137-87d5-6113fbfce3cd"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<text><![CDATA[Tên Khách Hàng :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="516" y="0" width="182" height="26" uuid="cc75319e-526b-4f96-bd14-fe2f074cb38e"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_customer_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="343" y="34" width="117" height="34" uuid="97c89205-a8b8-48fd-b716-fbbfe68c9a09"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<text><![CDATA[Địa Chỉ :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="516" y="26" width="182" height="34" uuid="dd78a88a-6cc4-427f-9803-ceb03fb2213c"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_customer_address}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="343" y="68" width="100" height="32" uuid="1040d4ca-b14c-43c4-af79-9bbc9b7990f1"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<text><![CDATA[SDT :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="516" y="60" width="182" height="32" uuid="19de7a12-4669-48e4-8238-9b2d6fca0b07"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_customer_phone}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="10" y="129" width="733" height="1" uuid="860fc992-d064-45b5-8839-77827057aba0"/>
+			</line>
+			<textField>
+				<reportElement x="145" y="14" width="132" height="34" uuid="7a7db220-238e-462d-8922-80321641efbf"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bill_months}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="14" width="156" height="34" uuid="3c6dcebf-ecdd-4e11-be2d-0553a054c7df"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<text><![CDATA[Tháng Thu :]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<staticText>
+				<reportElement x="208" y="11" width="100" height="27" uuid="9319a6e3-d045-4887-804a-ba47f53fdfe4"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<text><![CDATA[Loại Phòng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="425" y="11" width="100" height="25" uuid="79cbb714-f9ae-441b-8807-6ac81ce5a488"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<text><![CDATA[Giá (VND)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="108" y="11" width="100" height="25" uuid="c2c85f6f-1168-4ce9-94ad-287d66e9e34e"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<text><![CDATA[Tầng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="658" y="11" width="100" height="33" uuid="0e737829-7a4a-4ec1-82b6-979e720f7799"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<text><![CDATA[Tổng Tiền]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="325" y="11" width="100" height="27" uuid="69172468-e3de-4f97-8b90-e7bda0c72a2e"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<text><![CDATA[Số Người]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="525" y="11" width="122" height="33" uuid="3f151077-c2a5-43dc-b9c2-71830e24291c"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<text><![CDATA[Tiền Dịch Vụ (VND)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="11" width="100" height="25" uuid="6fa89f3f-93c2-45c8-bd74-7fe5c62a0576"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<text><![CDATA[Mã Phòng]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="56" width="733" height="1" uuid="69c9f3ff-d142-472a-bba8-f7c0f337d9e4"/>
+			</line>
+			<textField>
+				<reportElement x="8" y="66" width="117" height="31" uuid="d098c4dd-8ff1-4f9a-af50-1d19062386c3"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bill_room_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="108" y="66" width="117" height="31" uuid="ce015008-7f23-42de-9287-cbd2dd67457a"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Room_number_floor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="208" y="66" width="117" height="31" uuid="ce5738fa-3394-437b-9673-69af69be6176"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Room_type_room}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="326" y="66" width="117" height="31" uuid="3d12c198-8778-4ad6-93d7-fae25f796d77"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Room_number_person}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="425" y="66" width="117" height="31" uuid="00e8e09d-410d-45cb-87c8-377a5e421201"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Room_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="525" y="66" width="117" height="31" uuid="4201d1aa-82b1-4172-9c68-44ae81155f52"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bill_service_money}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="658" y="66" width="117" height="31" uuid="46f476ce-042b-4cf5-8bc4-9225a8250b22"/>
+				<textElement>
+					<font fontName="Tahoma" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Tong}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="21" y="124" width="722" height="1" uuid="742795cb-f2a8-4b34-9ec5-6519252e0efa"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="46" splitType="Stretch"/>
+	</columnFooter>
+	<summary>
+		<band height="38" splitType="Stretch"/>
+	</summary>
+</jasperReport>

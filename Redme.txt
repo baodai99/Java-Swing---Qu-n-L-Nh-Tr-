@@ -1,0 +1,35 @@
+Application java swing inn management.
+Ứng dụng java swing quản lý nhà trọ.
+Yêu cầu
+•	Chương trình java viết trên IDE netbean và dữ liệu truy xuất từ SQLServer.
+Cài đặt
+•	Đầu tiên, khởi chạy file QLNhaTro.SQL trên SQLServer nhằm khởi tạo các quan hệ và dữ liệu
+•	Import Project vào netbean và thay đổi QUAN TRỌNG TRÊN 
+o	Phương thức connect : jdbc:sqlserver://localhost:1433;databaseName= QLNhaTro;user=sa;password=sa
+o	Trong đó 1433 là port của SQLServer có lẽ bạn cần thay đổi
+o	databaseName nên giữ nguyên vì đã khởi tạo trên SQLServer
+o	user là sa hoặc quản trị khác
+o	password là mật khẩu tài khoản khai báo ở trên
+•	Cấu hình thư viện / configure build path thêm file sqljdbc4.jar để có thư viện kết nối database
+Triển khai chương trình
+•	Run để thưởng thức ☺
+________________________________________
+Prerequisites
+•	This is a Java program was writed on netbean  IDE and data is stored on SQLServer
+Installing
+•	Firstly, excute QuanLyNhaTro.SQL to create relation and values
+•	Import my project into eclise and make ==IMPORTANT== changes 
+o	connect method: jdbc:sqlserver://localhost:1433;databaseName= QLNhaTro.sql;user=sa;password=sa
+o	You can change the port of SQLServer after 'localhost:' (1433 is mine)
+o	databaseName is QLNhaTro
+o	user is sa or another administrator account on our database
+o	and you should have the password of this account ☺
+•	configure build path add file sqljdbc4.jar to have access database library
+Deployment
+•	Run and enjoy it☻
+________________________________________
+Authors
+•	Ninh Tuấn Doanh 
+•	Nguyễn Bảo Đại
+•	Đoàn Mạnh Cường
+•	Nguyễn Quốc Cường
